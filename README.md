@@ -2,7 +2,7 @@ Laravel Has Settings
 ============
 ###### Persisent settings on any Eloquent model
 [![Build Status](https://travis-ci.org/Priblo/Laravel-Has-Settings.svg?branch=master)](https://travis-ci.org/Priblo/Laravel-Has-Settings)
-
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4553569f57244a09a27ec556654b78f0)](https://www.codacy.com/app/0plus1/Laravel-Has-Settings?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Priblo/Laravel-Has-Settings&amp;utm_campaign=Badge_Grade)
 
 This package provides a trait to attach settings to any Eloquent model.
 

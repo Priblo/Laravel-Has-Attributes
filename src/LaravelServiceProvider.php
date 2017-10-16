@@ -26,7 +26,7 @@ class LaravelServiceProvider extends IlluminateServiceProvider {
      */
     public function register()
     {
-        $this->app->singleton(HasSettingRepositoryInterface::class, function ($app) {
+        $this->app->singleton(HasSettingRepositoryInterface::class, function () {
             $baseRepo = new EloquentHasSettingRepository(new HasSetting);
             return $baseRepo;
         });
