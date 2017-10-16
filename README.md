@@ -1,5 +1,8 @@
-# Laravel Has Settings
+Laravel Has Settings
+============
 ###### Persisent settings on any Eloquent model
+[![Build Status](https://travis-ci.org/Priblo/Laravel-Has-Settings.svg?branch=master)](https://travis-ci.org/Priblo/Laravel-Has-Settings)
+
 
 This package provides a trait to attach settings to any Eloquent model.
 
