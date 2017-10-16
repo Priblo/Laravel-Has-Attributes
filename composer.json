@@ -1,0 +1,28 @@
+{
+    "name": "priblo/laravel-has-settings",
+    "description": "Settings trait for Eloquent models",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Davide Gaido",
+            "email": "davide.0plus1@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.4",
+        "illuminate/support": "5.4.*|5.5.*",
+        "illuminate/config": "5.4.*|5.5.*",
+        "illuminate/database": "5.4.*|5.5.*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "~3.5",
+        "orchestra/database": "~3.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Priblo\\LaravelHasSettings\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
