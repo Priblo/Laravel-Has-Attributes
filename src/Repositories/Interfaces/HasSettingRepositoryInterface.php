@@ -15,6 +15,8 @@ interface HasSettingRepositoryInterface
 
     public function updateOneByModelAndKey(Model $Model, $key, $value);
 
-    public function createOne(Model $Model, $key, $value);
+    public function createOneForModel(Model $Model, $key, $value);
+
+    public function deleteOneByModelAndKey(Model $Model, $key);
 
 }
