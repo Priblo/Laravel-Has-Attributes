@@ -1,7 +1,7 @@
 <?php
 namespace Priblo\LaravelHasSettings\Traits;
 
-use Priblo\LaravelHasSettings\Models\HasSetting;
+use Priblo\LaravelHasSettings\Models\HasSetting as HasSettingModel;
 use Priblo\LaravelHasSettings\Repositories\Interfaces\HasSettingRepositoryInterface;
 
 /**
@@ -28,15 +28,15 @@ trait HasSettings
      *
      * @param $key
      * @param $value
-     * @return HasSettings
+     * @return HasSettingModel
      */
     public function createOrUpdateSetting($key, $value)
     {
         if ($this->hasSetting($key)) {
             return $this->updateOneSetting($key, $value);
-        } else {
-            return $this->createOneSetting($key, $value);
         }
+
+        return $this->createOneSetting($key, $value);
     }
 
     /**
@@ -73,11 +73,11 @@ trait HasSettings
      * Create one setting
      *
      * @param $key
-     * @return HasSetting
+     * @return HasSettingModel
      */
     public function createOneSetting($key, $value)
     {
-        return $this->Decorated->createOne($this, $key, $value);
+        return $this->Decorated->createOneForModel($this, $key, $value);
     }
 
     /**
@@ -96,7 +96,7 @@ trait HasSettings
      *
      * @param $key
      * @param $new_value
-     * @return HasSetting
+     * @return HasSettingModel
      */
     public function updateOneSetting($key, $new_value)
     {
