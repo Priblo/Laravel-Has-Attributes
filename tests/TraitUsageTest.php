@@ -28,6 +28,46 @@ class TraitUsageTest extends TestCase
     }
 
     /**
+     * Test update setting
+     */
+    public function test_UpdateSetting()
+    {
+        $User = $this->createOneUser();
+
+        $User->createOneSetting('premium', true);
+        $this->assertSame( $User->readOneSetting('premium'),  '1');
+
+        $User->updateOneSetting('premium', 0);
+        $this->assertSame( $User->readOneSetting('premium'),  '0');
+    }
+
+    /**
+     * Test has setting
+     */
+    public function test_HasSetting()
+    {
+        $User = $this->createOneUser();
+
+        $User->createOneSetting('premium', true);
+        $this->assertTrue( $User->hasSetting('premium'));
+        $this->assertFalse( $User->hasSetting('address'));
+    }
+
+    /**
+     * Test has setting
+     */
+    public function test_DeleteSetting()
+    {
+        $User = $this->createOneUser();
+
+        $User->createOneSetting('premium', true);
+        $this->assertTrue( $User->hasSetting('premium'));
+
+        $User->deleteOneSetting('premium');
+        $this->assertFalse( $User->hasSetting('premium'));
+    }
+
+    /**
      * @return User
      */
     private function createOneUser()
