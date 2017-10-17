@@ -18,6 +18,7 @@ class TraitUsageTest extends TestCase
     public function test_CreateSettings()
     {
         $User = $this->createOneUser();
+        $User2 = $this->createOneUser();
 
         $User->createOneSetting('premium', true);
         $User->createOneSetting('address', '123 unknow st');
@@ -25,6 +26,13 @@ class TraitUsageTest extends TestCase
         $settings = $User->readAllSettings();
         $this->assertSame( $settings->premium,  '1');
         $this->assertSame( $settings->address, '123 unknow st');
+
+        $User2->createOneSetting('premium', false);
+        $User2->createOneSetting('address', '321 unknow st');
+
+        $settings = $User2->readAllSettings();
+        $this->assertSame( $settings->premium,  '0');
+        $this->assertSame( $settings->address, '321 unknow st');
     }
 
     /**
@@ -33,12 +41,18 @@ class TraitUsageTest extends TestCase
     public function test_UpdateSetting()
     {
         $User = $this->createOneUser();
+        $User2 = $this->createOneUser();
 
         $User->createOneSetting('premium', true);
         $this->assertSame( $User->readOneSetting('premium'),  '1');
 
         $User->updateOneSetting('premium', 0);
         $this->assertSame( $User->readOneSetting('premium'),  '0');
+
+        $User2->createOneSetting('premium', 1);
+        $this->assertSame( $User2->readOneSetting('premium'),  '1');
+
+
     }
 
     /**
@@ -47,10 +61,12 @@ class TraitUsageTest extends TestCase
     public function test_HasSetting()
     {
         $User = $this->createOneUser();
+        $User2 = $this->createOneUser();
 
         $User->createOneSetting('premium', true);
         $this->assertTrue( $User->hasSetting('premium'));
         $this->assertFalse( $User->hasSetting('address'));
+        $this->assertFalse( $User2->hasSetting('premium'));
     }
 
     /**
@@ -59,12 +75,41 @@ class TraitUsageTest extends TestCase
     public function test_DeleteSetting()
     {
         $User = $this->createOneUser();
+        $User2 = $this->createOneUser();
 
         $User->createOneSetting('premium', true);
+        $User2->createOneSetting('premium', true);
         $this->assertTrue( $User->hasSetting('premium'));
 
         $User->deleteOneSetting('premium');
         $this->assertFalse( $User->hasSetting('premium'));
+        $this->assertTrue( $User2->hasSetting('premium'));
+    }
+
+    /**
+     * Test has setting
+     */
+    public function test_DeleteAllSettings()
+    {
+        $User = $this->createOneUser();
+        $User2 = $this->createOneUser();
+
+        $User->createOneSetting('premium', true);
+        $User->createOneSetting('address', '123 unknow st');
+        $User2->createOneSetting('premium', true);
+        $User2->createOneSetting('address', '123 unknow st');
+
+        $settings = $User->readAllSettings();
+        $this->assertSame( $settings->premium,  '1');
+        $this->assertSame( $settings->address, '123 unknow st');
+
+        $User->deleteAllSettings();
+        $this->assertTrue( empty((array)$User->readAllSettings()));
+
+        $settings = $User2->readAllSettings();
+        $this->assertSame( $settings->premium,  '1');
+        $this->assertSame( $settings->address, '123 unknow st');
+
     }
 
     /**
@@ -73,7 +118,7 @@ class TraitUsageTest extends TestCase
     private function createOneUser()
     {
         $User = new User();
-        $User->username = 'Mr.X';
+        $User->username = uniqid();
         $User->save();
 
         return $User;
