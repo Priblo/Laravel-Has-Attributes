@@ -84,11 +84,15 @@ trait HasSettings
      * Read one setting
      *
      * @param $key
-     * @return HasSetting
+     * @return string|null
      */
     public function readOneSetting($key)
     {
-        return $this->Decorated->findOneByModelAndKey($this, $key);
+        $HasSetting = $this->Decorated->findOneByModelAndKey($this, $key);
+        if(is_null($HasSetting)) {
+            return null;
+        }
+        return $HasSetting->value;
     }
 
     /**
