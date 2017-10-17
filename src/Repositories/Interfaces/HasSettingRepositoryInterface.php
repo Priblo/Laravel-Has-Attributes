@@ -19,4 +19,5 @@ interface HasSettingRepositoryInterface
 
     public function deleteOneByModelAndKey(Model $Model, $key);
 
+    public function deleteAllByModel(Model $Model);
 }

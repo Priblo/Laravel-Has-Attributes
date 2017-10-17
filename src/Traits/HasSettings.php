@@ -121,4 +121,13 @@ trait HasSettings
         return null;
     }
 
+    /**
+     * Deletes all settings attached to a model
+     *
+     * @return null
+     */
+    public function deleteAllSettings()
+    {
+        return $this->Decorated->deleteAllByModel($this);
+    }
 }

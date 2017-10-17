@@ -92,4 +92,18 @@ class EloquentHasSettingRepository implements HasSettingRepositoryInterface {
 
         return null;
     }
+
+    /**
+     * @param Model $Model
+     * @return null
+     */
+    public function deleteAllByModel(Model $Model)
+    {
+        $this->HasSetting
+            ->OfForeign($Model)
+            ->delete();
+
+        return null;
+    }
+
 }
