@@ -66,7 +66,7 @@ class EloquentHasSettingRepository implements HasSettingRepositoryInterface {
      * @param $value
      * @return HasSetting
      */
-    public function createOne(Model $Model, $key, $value)
+    public function createOneForModel(Model $Model, $key, $value)
     {
         $HasSetting = new $this->HasSetting;
         $HasSetting->foreign_id = $Model->getKey();
