@@ -1,11 +1,8 @@
 <?php
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase;
-use Illuminate\Foundation\Application;
 use Priblo\LaravelHasSettings\Traits\HasSettings;
-use Illuminate\Support\Facades\DB;
 
 /**
  * Class CommonUsageTest
