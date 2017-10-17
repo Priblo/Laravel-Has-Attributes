@@ -103,4 +103,18 @@ trait HasSettings
         return $this->Decorated->updateOneByModelAndKey($this, $key, $new_value);
     }
 
+    /**
+     * Deletes one key
+     *
+     * @param $key
+     * @return null
+     */
+    public function deleteOneSetting($key)
+    {
+        if($this->hasSetting($key)) {
+            $this->Decorated->deleteOneByModelAndKey($this, $key);
+        }
+        return null;
+    }
+
 }
