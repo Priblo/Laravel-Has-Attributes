@@ -46,16 +46,7 @@ trait HasSettings
      */
     public function readAllSettings()
     {
-        $key_value = new \stdClass();
-
-        $userSettings = $this->Decorated->findAllByModel($this);
-        foreach($userSettings as $UserSetting) {
-            $value = $UserSetting->value;
-            $key = $UserSetting->key;
-
-            $key_value->$key = $value;
-        }
-        return $key_value;
+        return json_decode($this->Decorated->findAllByModelAsJson($this));
     }
 
     /**

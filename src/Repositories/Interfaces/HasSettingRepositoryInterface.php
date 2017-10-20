@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 interface HasSettingRepositoryInterface
 {
+    public function findAllByModelAsJson(Model $Model);
+
     public function findAllByModel(Model $Model);
 
     public function findOneByModelAndKey(Model $Model, $key);

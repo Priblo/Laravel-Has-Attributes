@@ -24,6 +24,25 @@ class EloquentHasSettingRepository implements HasSettingRepositoryInterface {
 
     /**
      * @param Model $Model
+     * @return string
+     */
+    public function findAllByModelAsJson(Model $Model)
+    {
+        $key_value = new \stdClass();
+
+        $userSettings = $this->findAllByModel($Model);
+        foreach($userSettings as $UserSetting) {
+            $value = $UserSetting->value;
+            $key = $UserSetting->key;
+
+            $key_value->$key = $value;
+        }
+
+        return json_encode($key_value);
+    }
+
+    /**
+     * @param Model $Model
      * @return Collection
      */
     public function findAllByModel(Model $Model)
