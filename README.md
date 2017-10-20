@@ -12,23 +12,9 @@ Settings are stored following the [Entity-Attribute-Value model](https://en.wiki
 
 **Composer**
 
-Until this package is deemed stable e installation through composer must be done using the repositories option of Composer
-
 ```
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "vcs",
-            "no-api": true,
-            "url": "git@github.com:Priblo/Laravel-Has-Settings.git"
-        }
-    ],
+    composer require priblo/laravel-has-settings
 ```
-
-Then:
-
-``` composer install priblo/laravel-has-settings```
 
 **Laravel**
 
@@ -53,9 +39,11 @@ php artisan migrate
 ```
 
 ## Cache
-Caching requires a driver which supports tags. File and Database won't work. Please make sure to either disable caching in the config or use the array driver for local development.
+**Caching requires a driver which supports tags**. File and Database won't work. Please make sure to either disable caching in the config or use the array driver for local development.
 
 In the *has-settings.php* config file you can enable/disable caching and set the cache expiration time.
+
+**Caching is enabled by default**
 
 ## Notes
 
