@@ -25,7 +25,7 @@ class HasSetting extends Model
     {
         return $query->where([
             'foreign_id' => $Model->getKey(),
-            'foreign_model' => get_class($Model)
+            'foreign_type' => get_class($Model)
         ]);
     }
 }

@@ -89,7 +89,7 @@ class EloquentHasSettingRepository implements HasSettingRepositoryInterface {
     {
         $HasSetting = new $this->HasSetting;
         $HasSetting->foreign_id = $Model->getKey();
-        $HasSetting->foreign_model = get_class($Model);
+        $HasSetting->foreign_type = get_class($Model);
         $HasSetting->key = $key;
         $HasSetting->value = $value;
         $HasSetting->save();
