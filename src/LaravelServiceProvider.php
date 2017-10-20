@@ -27,12 +27,12 @@ class LaravelServiceProvider extends IlluminateServiceProvider {
      */
     public function register()
     {
-        $configPath = __DIR__ . '/../config/lhs.php';
-        $this->mergeConfigFrom($configPath, 'lhs');
+        $configPath = __DIR__ . '/../config/has-settings.php';
+        $this->mergeConfigFrom($configPath, 'has-settings');
 
         $this->app->singleton(HasSettingRepositoryInterface::class, function () {
             $baseRepo = new EloquentHasSettingRepository(new HasSetting);
-            if(config('lhs.caching_enabled')===false) {
+            if(config('has-settings.caching_enabled')===false) {
                 return $baseRepo;
             }
             return new CachingHasSettingRepository($baseRepo, $this->app['cache.store']);
@@ -48,7 +48,7 @@ class LaravelServiceProvider extends IlluminateServiceProvider {
             __DIR__.'/../migrations' => database_path('migrations')
         ], 'migrations');
         $this->publishes([
-            __DIR__ . '/../config/lhs.php' => config_path('lhs.php')
+            __DIR__ . '/../config/has-settings.php' => config_path('has-settings.php')
         ], 'config');
     }
 

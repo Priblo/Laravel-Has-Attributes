@@ -46,6 +46,7 @@ Then run:
 
 ```
 php artisan vendor:publish --provider="Priblo\LaravelHasSettings\LaravelServiceProvider" --tag="migrations"
+php artisan vendor:publish --provider="Priblo\LaravelHasSettings\LaravelServiceProvider" --tag="config"
 ```
 
 Then migrate:
@@ -54,11 +55,15 @@ Then migrate:
 php artisan migrate
 ```
 
+## Cache
+Caching requires a driver which supports tags. File and Database won't work. Please make sure to either disable caching in the config or use the array driver for local development.
+
+In the *has-settings.php* config file you can enable/disable caching and set the cache expiration time.
+
 ## Notes
 
 Please do remember that each of the settings in a EAV model are set as string, thus a value of *true* will be stored as *"1"*
 
 ## Roadmap
-* Cache decorator
-* Tests
+* More tests
 * Expand README.MD

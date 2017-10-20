@@ -16,7 +16,7 @@ class CachingHasSettingRepository implements HasSettingRepositoryInterface
     {
         $this->repository = $repository;
         $this->cache = $cache;
-        $this->cache_expiry = config('lhs.cache_expiry');
+        $this->cache_expiry = config('has-settings.cache_expiry');
     }
 
     /**
