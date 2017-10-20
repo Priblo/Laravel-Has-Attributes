@@ -32,15 +32,12 @@ Then:
 
 **Laravel**
 
-In *./config/app.php*
-
-Add:
+This package supports Auto Discovery. If your Laravel version doesn't support it or you have disabled it, you can install this package by adding to the 'providers' array in *./config/app.php*
 
 ```php
-Priblo\LaravelUserSettings\LaravelHasSettings::class,
+Priblo\LaravelHasSettings\LaravelServiceProvider::class,
 ```
 
-To the 'providers' array.
 
 Then run:
 

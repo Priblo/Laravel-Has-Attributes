@@ -30,5 +30,12 @@
             "Priblo\\LaravelHasSettings\\": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Priblo\\LaravelHasSettings\\LaravelServiceProvider"
+            ]
+        }
+    }
 }
