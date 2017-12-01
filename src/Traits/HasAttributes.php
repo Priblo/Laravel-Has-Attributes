@@ -30,70 +30,70 @@ trait HasAttributes
      * @param $value
      * @return HasSettingModel
      */
-    public function createOrUpdateSetting($key, $value)
+    public function createOrUpdateAttribute($key, $value)
     {
-        if ($this->hasSetting($key)) {
-            return $this->updateOneSetting($key, $value);
+        if ($this->hasAttribute($key)) {
+            return $this->updateOneAttribute($key, $value);
         }
 
-        return $this->createOneSetting($key, $value);
+        return $this->createOneAttribute($key, $value);
     }
 
     /**
-     * Read all Settings as a key/value object
+     * Read all Attributes as a key/value object
      *
      * @return \stdClass
      */
-    public function readAllSettings()
+    public function readAllAttributes()
     {
         return json_decode($this->Decorated->findAllByModelAsJson($this));
     }
 
     /**
-     * Check if user has a specific setting
+     * Check if user has a specific Attribute
      *
      * @param $key
      * @return bool
      */
-    public function hasSetting($key)
+    public function hasAttribute($key)
     {
-        return (!is_null($this->readOneSetting($key)));
+        return (!is_null($this->readOneAttribute($key)));
     }
 
     /**
-     * Create one setting
+     * Create one Attribute
      *
      * @param $key
-     * @return HasSettingModel
+     * @return HasAttributeModel
      */
-    public function createOneSetting($key, $value)
+    public function createOneAttribute($key, $value)
     {
         return $this->Decorated->createOneForModel($this, $key, $value);
     }
 
     /**
-     * Read one setting
+     * Read one Attribute
      *
      * @param $key
      * @return string|null
      */
-    public function readOneSetting($key)
+    public function readOneAttribute($key)
     {
-        $HasSetting = $this->Decorated->findOneByModelAndKey($this, $key);
-        if(is_null($HasSetting)) {
+        $HasAttribute = $this->Decorated->findOneByModelAndKey($this, $key);
+        if(is_null($HasAttribute)) {
             return null;
         }
-        return $HasSetting->value;
+        return $HasAttribute->value;
     }
 
     /**
-     * Updates one setting
+     * Updates one Attribute
      *
      * @param $key
      * @param $new_value
-     * @return HasSettingModel
+     * @return HasAttributeModel
      */
-    public function updateOneSetting($key, $new_value)
+    public function updateOneAttribute($key, $new_value)
     {
         return $this->Decorated->updateOneByModelAndKey($this, $key, $new_value);
     }
@@ -104,20 +104,20 @@ trait HasAttributes
      * @param $key
      * @return null
      */
-    public function deleteOneSetting($key)
+    public function deleteOneAttribute($key)
     {
-        if($this->hasSetting($key)) {
+        if($this->hasAttribute($key)) {
             $this->Decorated->deleteOneByModelAndKey($this, $key);
         }
         return null;
     }
 
     /**
-     * Deletes all settings attached to a model
+     * Deletes all Attributes attached to a model
      *
      * @return null
      */
-    public function deleteAllSettings()
+    public function deleteAllAttributes()
     {
         return $this->Decorated->deleteAllByModel($this);
     }

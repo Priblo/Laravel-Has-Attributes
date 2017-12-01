@@ -10,102 +10,102 @@ use Priblo\LaravelHasAttributes\Traits\HasAttributes;
 class TraitUsageTest extends TestCase
 {
     /**
-     * Test create settings
+     * Test create Attributes
      */
-    public function test_CreateSettings()
+    public function test_CreateAttributes()
     {
         $User = $this->createOneUser();
         $User2 = $this->createOneUser();
 
-        $User->createOneSetting('premium', true);
-        $User->createOneSetting('address', '123 unknow st');
+        $User->createOneAttribute('premium', true);
+        $User->createOneAttribute('address', '123 unknow st');
 
-        $settings = $User->readAllSettings();
-        $this->assertSame( $settings->premium,  '1');
-        $this->assertSame( $settings->address, '123 unknow st');
+        $Attributes = $User->readAllAttributes();
+        $this->assertSame( $Attributes->premium,  '1');
+        $this->assertSame( $Attributes->address, '123 unknow st');
 
-        $User2->createOneSetting('premium', false);
-        $User2->createOneSetting('address', '321 unknow st');
+        $User2->createOneAttribute('premium', false);
+        $User2->createOneAttribute('address', '321 unknow st');
 
-        $settings = $User2->readAllSettings();
-        $this->assertSame( $settings->premium,  '0');
-        $this->assertSame( $settings->address, '321 unknow st');
+        $Attributes = $User2->readAllAttributes();
+        $this->assertSame( $Attributes->premium,  '0');
+        $this->assertSame( $Attributes->address, '321 unknow st');
     }
 
     /**
-     * Test update setting
+     * Test update Attribute
      */
-    public function test_UpdateSetting()
+    public function test_UpdateAttribute()
     {
         $User = $this->createOneUser();
         $User2 = $this->createOneUser();
 
-        $User->createOneSetting('premium', true);
-        $this->assertSame( $User->readOneSetting('premium'),  '1');
+        $User->createOneAttribute('premium', true);
+        $this->assertSame( $User->readOneAttribute('premium'),  '1');
 
-        $User->updateOneSetting('premium', 0);
-        $this->assertSame( $User->readOneSetting('premium'),  '0');
+        $User->updateOneAttribute('premium', 0);
+        $this->assertSame( $User->readOneAttribute('premium'),  '0');
 
-        $User2->createOneSetting('premium', 1);
-        $this->assertSame( $User2->readOneSetting('premium'),  '1');
+        $User2->createOneAttribute('premium', 1);
+        $this->assertSame( $User2->readOneAttribute('premium'),  '1');
 
 
     }
 
     /**
-     * Test has setting
+     * Test has Attribute
      */
-    public function test_HasSetting()
+    public function test_HasAttribute()
     {
         $User = $this->createOneUser();
         $User2 = $this->createOneUser();
 
-        $User->createOneSetting('premium', true);
-        $this->assertTrue( $User->hasSetting('premium'));
-        $this->assertFalse( $User->hasSetting('address'));
-        $this->assertFalse( $User2->hasSetting('premium'));
+        $User->createOneAttribute('premium', true);
+        $this->assertTrue( $User->hasAttribute('premium'));
+        $this->assertFalse( $User->hasAttribute('address'));
+        $this->assertFalse( $User2->hasAttribute('premium'));
     }
 
     /**
-     * Test has setting
+     * Test has Attribute
      */
-    public function test_DeleteSetting()
+    public function test_DeleteAttribute()
     {
         $User = $this->createOneUser();
         $User2 = $this->createOneUser();
 
-        $User->createOneSetting('premium', true);
-        $User2->createOneSetting('premium', true);
-        $this->assertTrue( $User->hasSetting('premium'));
+        $User->createOneAttribute('premium', true);
+        $User2->createOneAttribute('premium', true);
+        $this->assertTrue( $User->hasAttribute('premium'));
 
-        $User->deleteOneSetting('premium');
-        $this->assertFalse( $User->hasSetting('premium'));
-        $this->assertTrue( $User2->hasSetting('premium'));
+        $User->deleteOneAttribute('premium');
+        $this->assertFalse( $User->hasAttribute('premium'));
+        $this->assertTrue( $User2->hasAttribute('premium'));
     }
 
     /**
-     * Test has setting
+     * Test has Attribute
      */
-    public function test_DeleteAllSettings()
+    public function test_DeleteAllAttributes()
     {
         $User = $this->createOneUser();
         $User2 = $this->createOneUser();
 
-        $User->createOneSetting('premium', true);
-        $User->createOneSetting('address', '123 unknow st');
-        $User2->createOneSetting('premium', true);
-        $User2->createOneSetting('address', '123 unknow st');
+        $User->createOneAttribute('premium', true);
+        $User->createOneAttribute('address', '123 unknow st');
+        $User2->createOneAttribute('premium', true);
+        $User2->createOneAttribute('address', '123 unknow st');
 
-        $settings = $User->readAllSettings();
-        $this->assertSame( $settings->premium,  '1');
-        $this->assertSame( $settings->address, '123 unknow st');
+        $Attributes = $User->readAllAttributes();
+        $this->assertSame( $Attributes->premium,  '1');
+        $this->assertSame( $Attributes->address, '123 unknow st');
 
-        $User->deleteAllSettings();
-        $this->assertTrue( empty((array)$User->readAllSettings()));
+        $User->deleteAllAttributes();
+        $this->assertTrue( empty((array)$User->readAllAttributes()));
 
-        $settings = $User2->readAllSettings();
-        $this->assertSame( $settings->premium,  '1');
-        $this->assertSame( $settings->address, '123 unknow st');
+        $Attributes = $User2->readAllAttributes();
+        $this->assertSame( $Attributes->premium,  '1');
+        $this->assertSame( $Attributes->address, '123 unknow st');
 
     }
 
