@@ -1,4 +1,4 @@
 /vendor/
 .idea
-Laravel-Has-Settings.iml
+*.iml
 
