@@ -19,7 +19,7 @@ class CreateHasAttributesTable extends Migration
             $table->morphs('foreign');
 
             $table->string('key')->index();
-            $table->string('value');
+            $table->text('value');
             $table->timestamps();
         });
     }
