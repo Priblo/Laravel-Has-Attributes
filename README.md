@@ -21,15 +21,15 @@ Settings are stored following the [Entity-Attribute-Value model](https://en.wiki
 This package supports Auto Discovery. If your Laravel version doesn't support it or you have disabled it, you can install this package by adding to the 'providers' array in *./config/app.php*
 
 ```php
-Priblo\LaravelHasSettings\LaravelServiceProvider::class,
+Priblo\LaravelHasAttributes\LaravelServiceProvider::class,
 ```
 
 
 Then run:
 
 ```
-php artisan vendor:publish --provider="Priblo\LaravelHasSettings\LaravelServiceProvider" --tag="migrations"
-php artisan vendor:publish --provider="Priblo\LaravelHasSettings\LaravelServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Priblo\LaravelHasAttributes\LaravelServiceProvider" --tag="migrations"
+php artisan vendor:publish --provider="Priblo\LaravelHasAttributes\LaravelServiceProvider" --tag="config"
 ```
 
 Then migrate:

@@ -1,18 +1,18 @@
 <?php
 
-namespace Priblo\LaravelHasSettings\Models;
+namespace Priblo\LaravelHasAttributes\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class HasSetting
+ * Class HasAttribute
  * @package App\Models
  */
-class HasSetting extends Model
+class HasAttribute extends Model
 {
-    protected $table = 'has_settings';
-    protected $primaryKey = 'has_setting_id';
+    protected $table = 'has_attributes';
+    protected $primaryKey = 'has_attribute_id';
 
     /**
      * Scope a query to limit results only to the referenced model

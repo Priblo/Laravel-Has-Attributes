@@ -1,25 +1,25 @@
 <?php
-namespace Priblo\LaravelHasSettings\Repositories;
+namespace Priblo\LaravelHasAttributes\Repositories;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Priblo\LaravelHasSettings\Models\HasSetting;
-use Priblo\LaravelHasSettings\Repositories\Interfaces\HasSettingRepositoryInterface;
+use Priblo\LaravelHasAttributes\Models\HasAttribute;
+use Priblo\LaravelHasAttributes\Repositories\Interfaces\HasAttributeRepositoryInterface;
 
 /**
- * Class EloquentHasSettingRepository
- * @package Priblo\LaravelHasSettings\Repositories
+ * Class EloquentHasAttributeRepository
+ * @package Priblo\LaravelHasAttributes\Repositories
  */
-class EloquentHasSettingRepository implements HasSettingRepositoryInterface {
+class EloquentHasAttributeRepository implements HasAttributeRepositoryInterface {
 
-    private $HasSetting;
+    private $HasAttribute;
 
     /**
-     * EloquentHasSettingRepository constructor.
-     * @param HasSetting $HasSetting
+     * EloquentHasAttributeRepository constructor.
+     * @param HasAttribute $HasAttribute
      */
-    public function __construct(HasSetting $HasSetting)
+    public function __construct(HasAttribute $HasAttribute)
     {
-        $this->HasSetting = $HasSetting;
+        $this->HasAttribute = $HasAttribute;
     }
 
     /**
@@ -30,10 +30,10 @@ class EloquentHasSettingRepository implements HasSettingRepositoryInterface {
     {
         $key_value = new \stdClass();
 
-        $userSettings = $this->findAllByModel($Model);
-        foreach($userSettings as $UserSetting) {
-            $value = $UserSetting->value;
-            $key = $UserSetting->key;
+        $userAttributes = $this->findAllByModel($Model);
+        foreach($userAttributes as $UserAttribute) {
+            $value = $UserAttribute->value;
+            $key = $UserAttribute->key;
 
             $key_value->$key = $value;
         }
@@ -47,7 +47,7 @@ class EloquentHasSettingRepository implements HasSettingRepositoryInterface {
      */
     public function findAllByModel(Model $Model)
     {
-        return $this->HasSetting
+        return $this->HasAttribute
             ->OfForeign($Model)
             ->get();
     }
@@ -55,11 +55,11 @@ class EloquentHasSettingRepository implements HasSettingRepositoryInterface {
     /**
      * @param Model $Model
      * @param $key
-     * @return HasSetting
+     * @return HasAttribute
      */
     public function findOneByModelAndKey(Model $Model, $key)
     {
-        return $this->HasSetting
+        return $this->HasAttribute
             ->OfForeign($Model)
             ->where(['key'=>$key])
             ->first();
@@ -69,11 +69,11 @@ class EloquentHasSettingRepository implements HasSettingRepositoryInterface {
      * @param Model $Model
      * @param $key
      * @param $value
-     * @return HasSetting
+     * @return HasAttribute
      */
     public function updateOneByModelAndKey(Model $Model, $key, $value)
     {
-        return $this->HasSetting
+        return $this->HasAttribute
             ->OfForeign($Model)
             ->where(['key'=>$key])
             ->update(['value' => $value]);
@@ -83,18 +83,18 @@ class EloquentHasSettingRepository implements HasSettingRepositoryInterface {
      * @param Model $Model
      * @param $key
      * @param $value
-     * @return HasSetting
+     * @return HasAttribute
      */
     public function createOneForModel(Model $Model, $key, $value)
     {
-        $HasSetting = new $this->HasSetting;
-        $HasSetting->foreign_id = $Model->getKey();
-        $HasSetting->foreign_type = get_class($Model);
-        $HasSetting->key = $key;
-        $HasSetting->value = $value;
-        $HasSetting->save();
+        $HasAttribute = new $this->HasAttribute;
+        $HasAttribute->foreign_id = $Model->getKey();
+        $HasAttribute->foreign_type = get_class($Model);
+        $HasAttribute->key = $key;
+        $HasAttribute->value = $value;
+        $HasAttribute->save();
 
-        return $HasSetting;
+        return $HasAttribute;
     }
 
     /**
@@ -104,7 +104,7 @@ class EloquentHasSettingRepository implements HasSettingRepositoryInterface {
      */
     public function deleteOneByModelAndKey(Model $Model, $key)
     {
-        $this->HasSetting
+        $this->HasAttribute
             ->OfForeign($Model)
             ->where(['key'=>$key])
             ->delete();
@@ -118,7 +118,7 @@ class EloquentHasSettingRepository implements HasSettingRepositoryInterface {
      */
     public function deleteAllByModel(Model $Model)
     {
-        $this->HasSetting
+        $this->HasAttribute
             ->OfForeign($Model)
             ->delete();
 

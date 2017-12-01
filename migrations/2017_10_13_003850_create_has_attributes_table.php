@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHasSettingsTable extends Migration
+class CreateHasAttributesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateHasSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('has_settings', function (Blueprint $table) {
-            $table->increments('has_setting_id');
+        Schema::create('has_attributes', function (Blueprint $table) {
+            $table->increments('has_attribute_id');
 
             $table->morphs('foreign');
 
@@ -31,6 +31,6 @@ class CreateHasSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('has_settings');
+        Schema::dropIfExists('has_attributes');
     }
 }

@@ -1,13 +1,13 @@
 <?php
-namespace Priblo\LaravelHasSettings\Repositories\Interfaces;
+namespace Priblo\LaravelHasAttributes\Repositories\Interfaces;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Interface HasSettingRepositoryInterface
- * @package Priblo\LaravelHasSettings\Repositories\Interfaces
+ * Interface HasAttributeRepositoryInterface
+ * @package Priblo\LaravelHasAttributes\Repositories\Interfaces
  */
-interface HasSettingRepositoryInterface
+interface HasAttributeRepositoryInterface
 {
     public function findAllByModelAsJson(Model $Model);
 

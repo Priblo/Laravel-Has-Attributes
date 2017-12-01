@@ -1,26 +1,26 @@
 <?php
-namespace Priblo\LaravelHasSettings\Traits;
+namespace Priblo\LaravelHasAttributes\Traits;
 
-use Priblo\LaravelHasSettings\Models\HasSetting as HasSettingModel;
-use Priblo\LaravelHasSettings\Repositories\Interfaces\HasSettingRepositoryInterface;
+use Priblo\LaravelHasAttributes\Models\HasAttribute as HasSettingModel;
+use Priblo\LaravelHasAttributes\Repositories\Interfaces\HasAttributeRepositoryInterface;
 
 /**
- * Trait HasSettings
- * @package Priblo\LaravelHasSettings\Traits
+ * Trait HasAttributes
+ * @package Priblo\LaravelHasAttributes\Traits
  */
-trait HasSettings
+trait HasAttributes
 {
     /**
-     * @var HasSettingRepositoryInterface
+     * @var HasAttributeRepositoryInterface
      */
     private $Decorated = null;
 
     /**
-     * HasSettings constructor.
+     * HasAttributes constructor.
      */
     public function __construct()
     {
-        $this->Decorated = resolve(HasSettingRepositoryInterface::class);
+        $this->Decorated = resolve(HasAttributeRepositoryInterface::class);
     }
 
     /**

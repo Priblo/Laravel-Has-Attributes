@@ -1,6 +1,6 @@
 {
-    "name": "priblo/laravel-has-settings",
-    "description": "Settings trait for Eloquent models",
+    "name": "priblo/laravel-has-attributes",
+    "description": "EAV based attributes as a Trait",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -27,14 +27,14 @@
     },
     "autoload": {
         "psr-4": {
-            "Priblo\\LaravelHasSettings\\": "src/"
+            "Priblo\\LaravelHasAttributes\\": "src/"
         }
     },
     "minimum-stability": "stable",
     "extra": {
         "laravel": {
             "providers": [
-                "Priblo\\LaravelHasSettings\\LaravelServiceProvider"
+                "Priblo\\LaravelHasAttributes\\LaravelServiceProvider"
             ]
         }
     }

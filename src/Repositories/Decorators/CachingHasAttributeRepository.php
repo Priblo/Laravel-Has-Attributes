@@ -1,18 +1,18 @@
 <?php
-namespace Priblo\LaravelHasSettings\Repositories\Decorators;
+namespace Priblo\LaravelHasAttributes\Repositories\Decorators;
 
 use Illuminate\Contracts\Cache\Repository as Cache;
 use Illuminate\Database\Eloquent\Model;
-use Priblo\LaravelHasSettings\Repositories\EloquentHasSettingRepository;
-use Priblo\LaravelHasSettings\Repositories\Interfaces\HasSettingRepositoryInterface;
+use Priblo\LaravelHasAttributes\Repositories\EloquentHasAttributeRepository;
+use Priblo\LaravelHasAttributes\Repositories\Interfaces\HasAttributeRepositoryInterface;
 
-class CachingHasSettingRepository implements HasSettingRepositoryInterface
+class CachingHasAttributeRepository implements HasAttributeRepositoryInterface
 {
     protected $repository;
     protected $cache;
     protected $cache_expiry;
 
-    public function __construct(EloquentHasSettingRepository $repository, Cache $cache)
+    public function __construct(EloquentHasAttributeRepository $repository, Cache $cache)
     {
         $this->repository = $repository;
         $this->cache = $cache;
@@ -47,7 +47,7 @@ class CachingHasSettingRepository implements HasSettingRepositoryInterface
      *
      * @param Model $Model
      * @param $key
-     * @return \Priblo\LaravelHasSettings\Models\HasSetting
+     * @return \Priblo\LaravelHasAttributes\Models\HasAttribute
      */
     public function findOneByModelAndKey(Model $Model, $key)
     {
@@ -58,7 +58,7 @@ class CachingHasSettingRepository implements HasSettingRepositoryInterface
      * @param Model $Model
      * @param $key
      * @param $value
-     * @return \Priblo\LaravelHasSettings\Models\HasSetting
+     * @return \Priblo\LaravelHasAttributes\Models\HasAttribute
      */
     public function updateOneByModelAndKey(Model $Model, $key, $value)
     {
@@ -70,7 +70,7 @@ class CachingHasSettingRepository implements HasSettingRepositoryInterface
      * @param Model $Model
      * @param $key
      * @param $value
-     * @return \Priblo\LaravelHasSettings\Models\HasSetting
+     * @return \Priblo\LaravelHasAttributes\Models\HasAttribute
      */
     public function createOneForModel(Model $Model, $key, $value)
     {

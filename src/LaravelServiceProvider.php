@@ -1,14 +1,14 @@
 <?php
-namespace Priblo\LaravelHasSettings;
-use Priblo\LaravelHasSettings\Repositories\Decorators\CachingHasSettingRepository;
+namespace Priblo\LaravelHasAttributes;
+use Priblo\LaravelHasAttributes\Repositories\Decorators\CachingHasAttributeRepository;
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
-use Priblo\LaravelHasSettings\Models\HasSetting;
-use Priblo\LaravelHasSettings\Repositories\EloquentHasSettingRepository;
-use Priblo\LaravelHasSettings\Repositories\Interfaces\HasSettingRepositoryInterface;
+use Priblo\LaravelHasAttributes\Models\HasAttribute;
+use Priblo\LaravelHasAttributes\Repositories\EloquentHasAttributeRepository;
+use Priblo\LaravelHasAttributes\Repositories\Interfaces\HasAttributeRepositoryInterface;
 
 /**
  * Class LaravelServiceProvider
- * @package Priblo\LaravelHasSettings\Laravel
+ * @package Priblo\LaravelHasAttributes\Laravel
  */
 class LaravelServiceProvider extends IlluminateServiceProvider {
 
@@ -27,15 +27,15 @@ class LaravelServiceProvider extends IlluminateServiceProvider {
      */
     public function register()
     {
-        $configPath = __DIR__ . '/../config/has-settings.php';
-        $this->mergeConfigFrom($configPath, 'has-settings');
+        $configPath = __DIR__ . '/../config/has-attributes.php';
+        $this->mergeConfigFrom($configPath, 'has-attributes');
 
-        $this->app->singleton(HasSettingRepositoryInterface::class, function () {
-            $baseRepo = new EloquentHasSettingRepository(new HasSetting);
-            if(config('has-settings.caching_enabled')===false) {
+        $this->app->singleton(HasAttributeRepositoryInterface::class, function () {
+            $baseRepo = new EloquentHasAttributeRepository(new HasAttribute);
+            if(config('has-attributes.caching_enabled')===false) {
                 return $baseRepo;
             }
-            return new CachingHasSettingRepository($baseRepo, $this->app['cache.store']);
+            return new CachingHasAttributeRepository($baseRepo, $this->app['cache.store']);
         });
     }
 
@@ -48,7 +48,7 @@ class LaravelServiceProvider extends IlluminateServiceProvider {
             __DIR__.'/../migrations' => database_path('migrations')
         ], 'migrations');
         $this->publishes([
-            __DIR__ . '/../config/has-settings.php' => config_path('has-settings.php')
+            __DIR__ . '/../config/has-attributes.php' => config_path('has-attributes.php')
         ], 'config');
     }
 

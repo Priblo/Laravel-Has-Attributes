@@ -2,7 +2,7 @@
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase;
-use Priblo\LaravelHasSettings\Traits\HasSettings;
+use Priblo\LaravelHasAttributes\Traits\HasAttributes;
 
 /**
  * Class CommonUsageTest
@@ -173,7 +173,7 @@ class TraitUsageTest extends TestCase
     {
         return [
             \Orchestra\Database\ConsoleServiceProvider::class,
-            \Priblo\LaravelHasSettings\LaravelServiceProvider::class,
+            \Priblo\LaravelHasAttributes\LaravelServiceProvider::class,
         ];
     }
 }
@@ -183,7 +183,7 @@ class TraitUsageTest extends TestCase
  */
 class User extends Eloquent
 {
-    use HasSettings;
+    use HasAttributes;
 
     protected $connection = 'testbench';
 
