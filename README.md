@@ -1,14 +1,16 @@
 Laravel Has Attributes
 ============
 ###### EAV Attributes in an handy Trait
-[![Build Status](https://travis-ci.org/Priblo/Laravel-Has-Settings.svg?branch=master)](https://travis-ci.org/Priblo/Laravel-Has-Settings)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4553569f57244a09a27ec556654b78f0)](https://www.codacy.com/app/0plus1/Laravel-Has-Settings?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Priblo/Laravel-Has-Settings&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/Priblo/Laravel-Has-Attributes.svg?branch=master)](https://travis-ci.org/Priblo/Laravel-Has-Settings)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/fa7f45945f53451ea768d3572a421383)](https://www.codacy.com/app/0plus1/Laravel-Has-Attributes?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Priblo/Laravel-Has-Attributes&amp;utm_campaign=Badge_Grade)
 
-This package provides a trait to attach attributes to any Eloquent model.
+This package provides a trait to attach attributes to any Eloquent model. The common use case is to add Settings to a model.
 
 Attributes are stored following the [Entity-Attribute-Value model](https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model). Data is abstracted using the [Decorator pattern](https://en.wikipedia.org/wiki/Decorator_pattern).
 
 ## Install
+
+_Requires: Laravel >=5.4_
 
 **Composer**
 
@@ -39,7 +41,7 @@ php artisan migrate
 ```
 
 ## Cache
-**Caching requires a driver which supports tags**. File and Database won't work. Please make sure to either disable caching in the config or use the array driver for local development.
+**Caching requires a driver which supports tags**. File and Database won't work, redis is suggested. Please make sure to either disable caching in the config or use the array driver for local development.
 
 In the *has-settings.php* config file you can enable/disable caching and set the cache expiration time.
 
