@@ -17,9 +17,13 @@ trait HasAttributes
 
     /**
      * HasAttributes constructor.
+     *
+     * Has to call parent contructor to avoid issues with mass fillables
+     * @param array $attributes
      */
-    public function __construct()
+    public function __construct(array $attributes = [])
     {
+        parent::__construct($attributes);
         $this->Decorated = resolve(HasAttributeRepositoryInterface::class);
     }
 
