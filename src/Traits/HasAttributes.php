@@ -1,7 +1,7 @@
 <?php
 namespace Priblo\LaravelHasAttributes\Traits;
 
-use Priblo\LaravelHasAttributes\Models\HasAttribute as HasSettingModel;
+use Priblo\LaravelHasAttributes\Models\HasAttribute as HasAttributeModel;
 use Priblo\LaravelHasAttributes\Repositories\Interfaces\HasAttributeRepositoryInterface;
 
 /**
@@ -32,7 +32,7 @@ trait HasAttributes
      *
      * @param $key
      * @param $value
-     * @return HasSettingModel
+     * @return HasAttributeModel
      */
     public function createOrUpdateAttribute($key, $value)
     {
@@ -79,13 +79,14 @@ trait HasAttributes
      * Read one Attribute
      *
      * @param $key
+     * @param null $default
      * @return string|null
      */
-    public function readOneAttribute($key)
+    public function readOneAttribute($key, $default = null)
     {
         $HasAttribute = $this->Decorated->findOneByModelAndKey($this, $key);
         if(is_null($HasAttribute)) {
-            return null;
+            return $default;
         }
         return $HasAttribute->value;
     }

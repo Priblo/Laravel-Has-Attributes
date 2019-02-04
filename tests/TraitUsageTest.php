@@ -12,6 +12,20 @@ class TraitUsageTest extends TestCase
     /**
      * Test create Attributes
      */
+    public function test_ReadAttribute()
+    {
+        $User = $this->createOneUser();
+
+        $User->createOneAttribute('premium', true);
+
+        $this->assertSame($User->readOneAttribute('premium'),  '1');
+        $this->assertSame($User->readOneAttribute('not-found'),  null);
+        $this->assertSame($User->readOneAttribute('not-found', true),  true);
+    }
+
+    /**
+     * Test create Attributes
+     */
     public function test_CreateAttributes()
     {
         $User = $this->createOneUser();
